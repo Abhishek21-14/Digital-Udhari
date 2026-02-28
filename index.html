@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Udhari System with Trust</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <h1>Digital Udhari System</h1>
+      <p>For local shops, trust-based udhari, and transparent payments.</p>
+    </header>
+
+    <main id="app"></main>
+  </div>
+
+  <template id="login-template">
+    <section class="card login-card">
+      <h2>Welcome Back</h2>
+      <p>Login with mobile/email + password</p>
+      <form id="login-form" class="form-grid">
+        <label>
+          Mobile or Email
+          <input type="text" name="identifier" placeholder="e.g. 98xxxxxxx1 or ramesh@shop.in" required />
+        </label>
+        <label>
+          Password
+          <input type="password" name="password" placeholder="••••••" required />
+        </label>
+        <button type="submit">Login</button>
+      </form>
+      <p class="hint">Demo accounts: <strong>shop@udhari.in</strong>, <strong>customer@udhari.in</strong>, password: <strong>123456</strong></p>
+      <div id="login-error" class="error"></div>
+    </section>
+  </template>
+
+  <template id="mode-template">
+    <section class="card mode-card">
+      <h2>Select Mode</h2>
+      <p>This account has multiple roles. Choose how you want to enter.</p>
+      <div class="mode-actions">
+        <button id="enter-shopkeeper">Enter as Shopkeeper</button>
+        <button id="enter-customer" class="secondary">Enter as Customer</button>
+      </div>
+    </section>
+  </template>
+
+  <template id="dashboard-template">
+    <div class="dashboard-layout">
+      <aside class="sidebar">
+        <h3 id="role-heading"></h3>
+        <nav>
+          <button data-view="overview">Overview</button>
+          <button data-view="customers" class="shopkeeper-only">Customer Management</button>
+          <button data-view="udhari" class="shopkeeper-only">Udhari Management</button>
+          <button data-view="payments" class="shopkeeper-only">Payment Management</button>
+          <button data-view="reports" class="shopkeeper-only">Report & Analysis</button>
+          <button data-view="records" class="customer-only">My Udhari Records</button>
+          <button data-view="trust" class="customer-only">My Trust Status</button>
+        </nav>
+        <button id="switch-mode" class="secondary">Switch Mode</button>
+        <button id="logout" class="danger">Logout</button>
+      </aside>
+      <section class="content">
+        <div id="view-root"></div>
+      </section>
+    </div>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
